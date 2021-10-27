@@ -1,8 +1,9 @@
-class Api::SessionsController < ApplicationController
+# frozen_string_literal: true
 
+class Api::SessionsController < ApplicationController
   def create
     user = User.find_by(email: session_params[:email])
-    if user&.authenticate(session_params[:password])  # userがnilでない場合にautheicateを実行。authenticate()は、ユーザーのパスワード一致判定を行うメソッド
+    if user&.authenticate(session_params[:password]) # userがnilでない場合にautheicateを実行。authenticate()は、ユーザーのパスワード一致判定を行うメソッド
       token = Jwt::TokenProvider.call(user_id: user.id) # 暗号化メソッドを呼び出し
       render json: ActiveModelSerializers::SerializableResource.new(user, serializer: UserSerializer).as_json.deep_merge(user: { token: token })
       # 新しくserializerインスタンスを作成を作るのはsessionの中身はuserモデルと同じなので、

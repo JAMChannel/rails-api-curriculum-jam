@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jwt::UserAuthenticator
   extend self
   # module内で定義したメソッドが「Jwt::UserAuthenticator.メソッド名」として使えるようになる

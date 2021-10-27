@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jwt::TokenProvider
   extend self
 
