@@ -5,7 +5,7 @@
             app
     >
       <v-list dense>
-        <v-list-item to="" link>
+        <v-list-item to="/" link>
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
@@ -19,7 +19,7 @@
             <v-icon>mdi-account</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title @click="">ログアウト</v-list-item-title>
+            <v-list-item-title @click="logout">ログアウト</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item></v-list-item>
@@ -34,7 +34,7 @@
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
     <v-main>
-      <!-- <router-view></router-view> -->
+      <router-view></router-view>
     </v-main>
     <v-footer
       color="indigo"
