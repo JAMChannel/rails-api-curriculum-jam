@@ -10,17 +10,23 @@ class ApplicationController < ActionController::Base
   rescue_from AuthenticationError, with: :not_authenticated
   # 「rescue_from」で例外の処理を実行。AuthenticationErrorが起きた場合、not_authenticatedメソッドを実行
 
+  # rescue_from StandardError, with: :render_error
+  
   def authenticate
     raise AuthenticationError unless current_user
   end
   # 現在ログイン中のuserでなければエラーを発生させるメソッド
-
+  
   def current_user
     @current_user ||= Jwt::UserAuthenticator.call(request.headers) # 引数にはリクエストのヘッダー情報を送る
   end
   # ログイン中のuserかどうかを判定するメソッド
-
+  
   private
+  
+  # def render_error(e)
+  #   render json: { message: e.message }
+  # end
 
   def render_422(exception)
     render json: { error: { messages: exception.record.errors.full_messages } }, status: :unprocessable_entity
