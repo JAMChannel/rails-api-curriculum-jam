@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   rescue_from AuthenticationError, with: :not_authenticated
   # 「rescue_from」で例外の処理を実行。AuthenticationErrorが起きた場合、not_authenticatedメソッドを実行
 
-  rescue_from StandardError, with: :render_error
+  # rescue_from StandardError, with: :render_error
   
   def authenticate
     raise AuthenticationError unless current_user
