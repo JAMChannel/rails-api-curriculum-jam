@@ -36,14 +36,14 @@
             }
 
         },
-        // created() {
-        //     this.fetchMicroposts()
-        // },
+        created() {
+            this.fetchMicroposts()
+        },
         methods: {
-            // async fetchMicroposts() {
-            //     const res = await axios.get(`/api/microposts`)
-            //     this.microposts = res.data.microposts
-            // },
+            async fetchMicroposts() {
+                const res = await axios.get(`/api/microposts`)
+                this.microposts = res.data.microposts
+            },
             async createMicropost(micropostContent) {
                 const micropostParams = {
                     micropost: {
