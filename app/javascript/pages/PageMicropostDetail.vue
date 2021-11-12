@@ -16,19 +16,19 @@
                         <v-list-item-action>
                             <v-list-item-action-text v-text="$dayjs(micropost.created_at).format('YYYY-MM-DD HH:mm:ss')"></v-list-item-action-text>
                             <div v-if="isMine" class="d-flex">
-                                <!-- <v-btn fab small dark color="teal" @click="openEditMicropost" class="mx-2">
+                                <v-btn fab small dark color="teal" @click="openEditMicropost" class="mx-2">
                                     <v-icon>mdi-pen</v-icon>
                                 </v-btn>
                                 <v-btn fab small dark color="error" @click="deleteMicropost" class="mx-2">
                                     <v-icon>mdi-delete</v-icon>
-                                </v-btn> -->
+                                </v-btn>
                             </div>
                         </v-list-item-action>
                     </v-list-item>
                     <v-divider
                             :inset="true"
                     ></v-divider>
-                    <!-- <micropost-edit-modal v-if="isMine" ref="dialog" :micropost="micropost" @update="updateMicropost"></micropost-edit-modal> -->
+                    <micropost-edit-modal v-if="isMine" ref="dialog" :micropost="micropost" @update="updateMicropost"></micropost-edit-modal>
                 </div>
             </v-col>
         </v-row>
@@ -37,7 +37,7 @@
 
 <script>
     import axios from 'axios'
-    // import MicropostEditModal from '@/components/MicropostEditModal'
+    import MicropostEditModal from '@/components/MicropostEditModal'
     export default {
         data() {
             return {
@@ -45,7 +45,7 @@
             }
         },
         components: {
-            // MicropostEditModal
+            MicropostEditModal
         },
         created() {
             this.fetchMicropost()
@@ -67,6 +67,7 @@
                 this.micropost = res.data.micropost
             },
             openEditMicropost() {
+              // debugger
                 this.$refs.dialog.open()
             },
             async updateMicropost(micropostContent) {
@@ -76,6 +77,7 @@
             },
             async deleteMicropost() {
                 if(confirm("削除しますか？")) {
+                  // debugger
                     await axios.delete(`/api/microposts/${this.micropostId}`)
                     this.$router.push(`/microposts`)
                 }
