@@ -59,3 +59,4 @@ end
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'jwt'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'active_storage_base64'
