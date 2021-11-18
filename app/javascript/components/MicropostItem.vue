@@ -3,8 +3,8 @@
         <v-list-item
                 @click="$router.push(`/microposts/${micropost.id}`)"
         >
-            <v-list-item-avatar>
-                <v-img src="https://picsum.photos/80/80/?random"></v-img>
+            <v-list-item-avatar @click="$router.push(`/users/${micropost.user.id}`)">
+                <v-img :src="micropost.user.avatar_url"></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>
