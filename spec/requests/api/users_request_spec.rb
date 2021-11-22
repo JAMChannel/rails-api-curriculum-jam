@@ -37,4 +37,35 @@ RSpec.describe "Api::Users", type: :request do
                                       })
     end
   end
+
+  describe 'GET /api/users' do
+    context 'ページングなし' do
+      let!(:users) { create_list(:user, 5) }
+      it 'ユーザーの一覧が取得できること' do
+        get api_users_path
+        expect(response).to have_http_status(200)
+        json = JSON.parse(response.body)
+        expect(json['users']).to match_array(users.map { |user|
+          include(
+              'id' => user.id,
+              'name' => user.name,
+          )
+        })
+      end
+    end
+
+    context 'ページングあり' do
+      let!(:users) { create_list(:user, 25) }
+      it 'ユーザーの一覧が取得できること' do
+        get api_users_path
+        expect(response).to have_http_status(200)
+        json = JSON.parse(response.body)
+        expect(json['meta']).to include(
+                                    'total_pages' => 3,
+                                    'total_count' => 25,
+                                    'current_page' => 1
+                                )
+      end
+    end
+  end
 end
