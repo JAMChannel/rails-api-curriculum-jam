@@ -53,7 +53,7 @@
         },
         computed: {
             isValid() {
-              debugger
+            //   debugger
                 return this.micropostContent.length > 0 && this.micropostContent.length <= 140
             }
 
