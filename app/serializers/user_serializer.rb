@@ -11,4 +11,6 @@ class UserSerializer < ActiveModel::Serializer
       'https://placehold.jp/300x300.png'
     end
   end
+
+  has_many :tags
 end
