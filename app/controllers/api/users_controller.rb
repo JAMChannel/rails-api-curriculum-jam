@@ -28,4 +28,8 @@ class Api::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+
+  def search_params
+    params[:q]&.permit(:name, tag_ids: [])
+  end
 end
