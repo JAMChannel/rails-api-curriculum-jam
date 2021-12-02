@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // debugger
   document.body.appendChild(app.$el)
 
-  console.log(app)
+  // console.log(app)
 })
 
 
